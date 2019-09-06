@@ -1,2 +1,2 @@
-# elem-gen
+# Form Element Generator
 Form Element Generator (Svelte)
