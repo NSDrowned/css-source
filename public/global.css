@@ -4,9 +4,14 @@ html, body {
 	height: 100%;
 }
 
+*,*:after,*:before {
+	box-sizing: border-box;
+}
+
 body {
 	color: #333;
 	background-color: #f6f6f6;
+	background-image: url('assets/img/noisy-texture.png');
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;

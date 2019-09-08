@@ -1,6 +1,6 @@
 <script>
-    import RangeSlider from '../rangeslider/rangeslider.svelte';
-    let borderWidth = 0;
+	import RangeSlider from '../rangeslider/rangeslider.svelte';
+	import ColorPicker from '../colorPicker/colorPicker.svelte';
 </script>
 
 <style lang="scss">
@@ -8,6 +8,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		max-width: 100%;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.12);
     }
     .input {
         position: absolute;
@@ -43,6 +44,7 @@
 		display: none;
 		padding: 14px;
 		background: #fff;
+		
 	}
 	@media (min-width: 600px) {
 		.panel {
@@ -59,8 +61,9 @@
     <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
     <label for="tab-1" class="label">Default</label>
     <div class="panel">
-        <RangeSlider name="Border Width" minValue="0" maxValue="100" valueName="borderWidth"/>
-        <RangeSlider name="Border Radius" minValue="0" maxValue="100" valueName="borderRadius" />
+        <RangeSlider name="Border Width (px)" minValue="0" maxValue="100" valueName="borderWidth"/>
+        <RangeSlider name="Border Radius (px)" minValue="0" maxValue="100" valueName="borderRadius" />
+		<ColorPicker name="Border Color" valueName="borderColor" />
     </div>
 
     <input name="tabs" type="radio" id="tab-2" class="input"/>

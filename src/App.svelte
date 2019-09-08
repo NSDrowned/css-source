@@ -11,7 +11,7 @@
 		margin-right: auto;
 	}
 	h1 {
-		color: purple;
+		color: #1abc9c;
 	}	
 </style>
 
@@ -19,17 +19,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h1>Form Element Generator</h1>
+			<h1>Input Element Styler</h1>
+			<div>Style your form input elements, including success, error and disabled states.</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<Result />
 		</div>
 	</div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
 			<Tabs />		
 		</div>
-
-		<div class="col-6">
-			<Result />
+		<div class="col-5">
 			<Textarea />
+			<h4>Generated HTML:</h4>
+			<textarea></textarea>
 		</div>
 	</div>
 </div>
