@@ -1,4 +1,5 @@
 <script>
+	import Navbar from './components/navigation/navbar/navbar.svelte';
 	import Result from './components/result/result.svelte';
 	import Tabs from './components/tabs/tabs.svelte';
 	import Textarea from './components/textarea/textarea.svelte';
@@ -12,14 +13,15 @@
 	}
 	h1 {
 		color: #1abc9c;
+		margin: 0;
 	}	
 </style>
 
-
+<Navbar />
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h1>Input Element Styler</h1>
+			<h1>Form Input Element Styler</h1>
 			<div>Style your form input elements, including success, error and disabled states.</div>
 		</div>
 	</div>
