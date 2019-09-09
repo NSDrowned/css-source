@@ -69,10 +69,26 @@
     function jstocss(object) {
         var tempString = '';
         for (var objectKey in object) {
-            if(isNumeric(object[objectKey])) {
-                object[objectKey] ? tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n" : ''
-            } else {
-                object[objectKey] ? tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + ";\n" : ''
+            switch (objectKey) {
+                case 'borderRadius':
+                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n";
+                break;
+                case 'borderWidth':
+                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n";
+                break;                
+                case 'borderColor':
+                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + ";\n";
+                break;                   
+                case 'outline':
+                    if(object[objectKey]) {
+                        tempString += 'outline: none;\n';
+                    }
+                break;
+                case 'boxSizing':
+                    if(object[objectKey]) {
+                        tempString += 'box-sizing: border-box;\n';
+                    }
+                break;                           
             }
         }
         return tempString;
@@ -85,6 +101,8 @@
         styleValues.borderRadius = storedValues.borderRadius;
         styleValues.borderWidth = storedValues.borderWidth;
         styleValues.borderColor = storedValues.borderColor;
+        styleValues.outline = storedValues.outline;
+        styleValues.boxSizing = storedValues.boxSizing;
 
         GeneratedCss.update(storedCss => {
             return { generatedCss : jstocss(styleValues) };

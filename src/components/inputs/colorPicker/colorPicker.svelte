@@ -1,5 +1,5 @@
 <script>
-    import InputValues from '../../stores/inputValues.js';
+    import InputValues from '../../../stores/inputValues.js';
     import Pickr from '@simonwep/pickr';
 
     export let name;
@@ -55,8 +55,6 @@
         });
 
         pickr.on('save', instance => {
-
-            
             if(instance) {
                 InputValues.update(storedValues => {
                     return { ...storedValues, [valueName] : instance.toHEXA().toString() }

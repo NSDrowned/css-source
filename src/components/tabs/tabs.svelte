@@ -1,6 +1,8 @@
 <script>
-	import RangeSlider from '../rangeslider/rangeslider.svelte';
-	import ColorPicker from '../colorPicker/colorPicker.svelte';
+	import RangeSlider from '../inputs/rangeslider/rangeslider.svelte';
+	import ColorPicker from '../inputs/colorPicker/colorPicker.svelte';
+	import CheckBox from '../inputs/checkbox/checkbox.svelte';
+	import Switch from '../inputs/switch/switch.svelte';
 </script>
 
 <style lang="scss">
@@ -42,7 +44,7 @@
 	}
 	.panel {
 		display: none;
-		padding: 14px;
+		padding: 24px;
 		background: #fff;
 		
 	}
@@ -64,6 +66,8 @@
         <RangeSlider name="Border Width (px)" minValue="0" maxValue="100" valueName="borderWidth"/>
         <RangeSlider name="Border Radius (px)" minValue="0" maxValue="100" valueName="borderRadius" />
 		<ColorPicker name="Border Color" valueName="borderColor" />
+		<CheckBox name="Hide Outline (on focus)" valueName="outline" />
+		<Switch name="Box-sizing" falseOption="Content-box (default)" trueOption="Border-box" valueName="boxSizing" />
     </div>
 
     <input name="tabs" type="radio" id="tab-2" class="input"/>

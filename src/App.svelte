@@ -2,7 +2,7 @@
 	import Navbar from './components/navigation/navbar/navbar.svelte';
 	import Result from './components/result/result.svelte';
 	import Tabs from './components/tabs/tabs.svelte';
-	import Textarea from './components/textarea/textarea.svelte';
+	import GeneratedCSS from './components/generatedcss/generatedcss.svelte';
 </script>
 
 <style lang="scss">
@@ -35,7 +35,7 @@
 			<Tabs />		
 		</div>
 		<div class="col-5">
-			<Textarea />
+			<GeneratedCSS />
 			<h4>Generated HTML:</h4>
 			<textarea></textarea>
 		</div>

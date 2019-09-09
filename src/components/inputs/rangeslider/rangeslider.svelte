@@ -1,5 +1,5 @@
 <script>
-    import InputValues from '../../stores/inputValues.js';
+    import InputValues from '../../../stores/inputValues.js';
     
     export let name;
     export let minValue;
@@ -26,6 +26,10 @@
         width: 60px;
         text-align: center;
         overflow: visible;
+        top: -1px;
+        left: -1px;
+        position: relative;
+        outline: none;
     }
 
     // Base Colors
@@ -36,7 +40,7 @@
     $teal: #1abc9c;
 
     .range-slider {
-        // margin: 60px 0 0 0%;
+        margin-bottom: 14px;
     }
 
     // Range Slider
@@ -49,12 +53,13 @@
     $range-label-color: $shade-10;
     $range-label-width: 60px;
 
-    .range-slider {
+    input[type=range] {
         width: $range-width;
     }
 
     input[type=range] {
         -webkit-appearance: none;
+        appearance: none;
         width: calc(100% - (#{$range-label-width + 13px}));
         height: $range-track-height;
         border-radius: 5px;
@@ -65,6 +70,7 @@
     }
     // Range Handle
     input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
         appearance: none;
         width: $range-handle-size;
         height: $range-handle-size;
@@ -92,7 +98,7 @@
         transition: background .15s ease-in-out;
 
         &:hover {
-        background: $range-handle-color-hover;
+            background: $range-handle-color-hover;
         }
     }
 
@@ -117,6 +123,7 @@
         border-radius: 3px;
         background: $range-label-color;
         margin-left: 8px;
+        top: 2px;
 
         &:after {
             position: absolute;
@@ -144,9 +151,6 @@
 </style>
 
 <label>{name}</label>
-<!-- <input type="range" min={minValue} max={maxValue} on:input={() => validateInput(rangeValue)} bind:value={rangeValue} value="{rangeValue}" class="slider" id="myRange">
-<input class="numberInput" type="text" bind:value={rangeValue} on:input={() => validateInput(rangeValue)} value="{rangeValue}"> px -->
-
 <div class="range-slider">
     <input class="range-slider__range" type="range" min={minValue} max={maxValue} on:input={() => validateInput(rangeValue)} bind:value={rangeValue} value="{rangeValue}">
     <span class="range-slider__value"><input class="numberInput" type="text" bind:value={rangeValue} on:input={() => validateInput(rangeValue)} value="{rangeValue}"></span>
