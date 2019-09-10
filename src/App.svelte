@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h1>Form Input Element Styler</h1>
+			<h1>Form Input Element Styler (Beta)</h1>
 			<div>Style your form input elements, including success, error and disabled states.</div>
 		</div>
 	</div>
@@ -36,8 +36,8 @@
 		</div>
 		<div class="col-5">
 			<GeneratedCSS />
-			<h4>Generated HTML:</h4>
-			<textarea></textarea>
+			<!-- <h4>Generated HTML:</h4>
+			<textarea></textarea> -->
 		</div>
 	</div>
 </div>

@@ -66,8 +66,8 @@
         <RangeSlider name="Border Width (px)" minValue="0" maxValue="100" valueName="borderWidth"/>
         <RangeSlider name="Border Radius (px)" minValue="0" maxValue="100" valueName="borderRadius" />
 		<ColorPicker name="Border Color" valueName="borderColor" />
-		<CheckBox name="Hide Outline (on focus)" valueName="outline" />
 		<Switch name="Box-sizing" falseOption="Content-box (default)" trueOption="Border-box" valueName="boxSizing" />
+		<Switch name="Outline" description="Removes the blue outline on focus. Don't disable if you care about accessibility." falseOption="Enabled (default)" trueOption="Disabled" valueName="outline" />		
     </div>
 
     <input name="tabs" type="radio" id="tab-2" class="input"/>

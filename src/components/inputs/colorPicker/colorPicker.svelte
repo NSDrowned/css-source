@@ -1,17 +1,21 @@
 <script>
+    import { onMount } from 'svelte';
     import InputValues from '../../../stores/inputValues.js';
     import Pickr from '@simonwep/pickr';
 
     export let name;
     export let valueName;
+    let pickr;
+    let hexvalue = '#CCCCCC';
 
-    setTimeout(function() {
-        const pickr = Pickr.create({
+    onMount(async () => {
+        pickr = Pickr.create({
             el: '.color-picker',
             theme: 'nano', // or 'monolith', or 'nano',
             closeOnScroll: false,
             defaultRepresentation: 'HEX',
             comparison: false,
+            default: '#CCCCCC',
             lockOpacity: false,
             swatches: [
                 'rgba(244, 67, 54, 1)',
@@ -57,18 +61,42 @@
         pickr.on('save', instance => {
             if(instance) {
                 InputValues.update(storedValues => {
+                    hexvalue = instance.toHEXA().toString();
                     return { ...storedValues, [valueName] : instance.toHEXA().toString() }
                 });
             } else {
                 InputValues.update(storedValues => {
+                    hexvalue = 'None';
                     return { ...storedValues, [valueName] : null }
                 });                
             }
-        }); 
+        });     
+    });
 
-    }, 1);
+    function changeColor(event) {
+        pickr.setColor(event.target.value);
+    }    
 
 </script>
 
+<style lang="scss">
+    .pickerWrapper {
+        border: 1px dotted #CCC;
+        padding: 8px;
+        padding-bottom: 0px;        
+        text-align: center;
+        margin-top: 8px;
+        margin-bottom: 14px;
+
+        input {
+            display: inline-block;
+            width: 86px;
+        }
+    }
+</style>
+
 <label>{name}</label>
-<div class="color-picker"></div>
+<div class="pickerWrapper">
+    <div class="color-picker"></div>
+    <input type="text" on:change={changeColor} value={hexvalue}>
+</div>

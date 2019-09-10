@@ -3,6 +3,7 @@
 
     export let name;
     export let valueName;
+    export let description;
     export let falseOption;
     export let trueOption;
 
@@ -16,13 +17,18 @@
 </script>
 
 <style lang="scss">
+    .description {
+        font-size: 13px;
+        color: #888;
+    }
     .switchWrapper {
         border: 1px dotted #CCC;
         padding: 14px;
         text-align: center;
         margin-top: 8px;
+        margin-bottom: 14px;
         padding-top: 8px;
-        max-width: 300px;
+        // max-width: 300px;
 
         .falsetext,
         .truetext {
@@ -76,6 +82,9 @@
 </style>
 
 <label>{name}</label>
+{#if description}
+     <div class="description">{description}</div>
+{/if}
 <div class="switchWrapper">
     <div class="falsetext">{falseOption}</div>
     <label class="switch">

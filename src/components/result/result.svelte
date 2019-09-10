@@ -1,7 +1,8 @@
 <script>
+    import { onMount } from 'svelte';
     import Pickr from '@simonwep/pickr';
 
-    setTimeout(function() {
+    onMount(async () => {
         const pickr = Pickr.create({
             el: '.backColor-picker',
             theme: 'nano', // or 'monolith', or 'nano',
@@ -49,7 +50,7 @@
             pickr.applyColor();
         });        
 
-    }, 1);
+    });
 
     // stores
     import { get } from 'svelte/store';
