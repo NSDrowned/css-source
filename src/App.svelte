@@ -18,16 +18,22 @@
 </style>
 
 <Navbar />
+
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h1>Form Input Element Styler (Beta)</h1>
+			<h1>Text Input Element Generator (Beta)</h1>
 			<div>Style your form input elements, including success, error and disabled states.</div>
 		</div>
 	</div>
+</div>
+
+<Result />
+
+<div class="container">
 	<div class="row">
 		<div class="col-12">
-			<Result />
+
 		</div>
 	</div>
     <div class="row">

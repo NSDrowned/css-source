@@ -63,9 +63,11 @@
     <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
     <label for="tab-1" class="label">Default</label>
     <div class="panel">
+		<RangeSlider name="Font-size" minValue="0" maxValue="100" valueName="fontSize" showMiniSwitch="true" miniValueName="fontSizeUnit" miniFirstOption="px" miniSecondOption="rem"/>
         <RangeSlider name="Border Width (px)" minValue="0" maxValue="100" valueName="borderWidth"/>
-        <RangeSlider name="Border Radius (px)" minValue="0" maxValue="100" valueName="borderRadius" />
-		<ColorPicker name="Border Color" valueName="borderColor" />
+        <RangeSlider name="Border Radius" minValue="0" maxValue="100" valueName="borderRadius" showMiniSwitch="true" miniValueName="borderRadiusUnit" miniFirstOption="px" miniSecondOption="%" />
+		<ColorPicker name="Border" valueName="borderColor" />
+		<ColorPicker name="Placeholder Color" valueName="placeHolderColor" />
 		<Switch name="Box-sizing" falseOption="Content-box (default)" trueOption="Border-box" valueName="boxSizing" />
 		<Switch name="Outline" description="Removes the blue outline on focus. Don't disable if you care about accessibility." falseOption="Enabled (default)" trueOption="Disabled" valueName="outline" />		
     </div>

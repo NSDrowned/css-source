@@ -60,6 +60,7 @@
     let backColor = '#A9A9A9';
     let styleValues = get(InputValues);
     let cssString = '';
+    let cssClass;
 
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
@@ -69,29 +70,46 @@
 
     function jstocss(object) {
         var tempString = '';
+        var pseudoString = '';
         for (var objectKey in object) {
             switch (objectKey) {
+                case 'fontSize':
+                    tempString += '\t' + objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + styleValues.fontSizeUnit + ";\n";
+                break;
                 case 'borderRadius':
-                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n";
+                    tempString += '\t' + objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + styleValues.borderRadiusUnit + ";\n";
                 break;
                 case 'borderWidth':
-                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n";
+                    tempString += '\t' + objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + "px;\n";
                 break;                
                 case 'borderColor':
-                    tempString += objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + ";\n";
-                break;                   
+                    tempString += '\t' + objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) + ": " + object[objectKey] + ";\n";
+                break;                                       
                 case 'outline':
                     if(object[objectKey]) {
-                        tempString += 'outline: none;\n';
+                        tempString += '\toutline: none;\n';
                     }
                 break;
                 case 'boxSizing':
                     if(object[objectKey]) {
-                        tempString += 'box-sizing: border-box;\n';
+                        tempString += '\tbox-sizing: border-box;\n';
                     }
-                break;                           
+                break;
+                
+                // pseudo
+
+                case 'placeHolderColor':
+                    if(object[objectKey]) {
+                        pseudoString += '#sampleWrapper input::placeholder {\n\tcolor: ' + object[objectKey] + ';\n}\n';
+                        pseudoString += '#sampleWrapper input:-ms-input-placeholder {\n\tcolor: ' + object[objectKey] + ';\n}\n';
+                        pseudoString += '#sampleWrapper input::-ms-input-placeholder {\n\tcolor: ' + object[objectKey] + ';\n}\n';
+                    }
+                break;                      
             }
         }
+
+        updateHTMLStyle(tempString, pseudoString);
+
         return tempString;
     }
 
@@ -99,9 +117,13 @@
 
     const valuesSubscription = InputValues.subscribe(storedValues => {
 
+        styleValues.fontSize = storedValues.fontSize;
+        styleValues.fontSizeUnit = storedValues.fontSizeUnit;
         styleValues.borderRadius = storedValues.borderRadius;
+        styleValues.borderRadiusUnit = storedValues.borderRadiusUnit;
         styleValues.borderWidth = storedValues.borderWidth;
         styleValues.borderColor = storedValues.borderColor;
+        styleValues.placeHolderColor = storedValues.placeHolderColor;
         styleValues.outline = storedValues.outline;
         styleValues.boxSizing = storedValues.boxSizing;
 
@@ -110,13 +132,19 @@
         });
     });
 
-    // stored generated css
+    // // stored generated css
 
-    let css;
+    // let css;
 
-    const cssSubscription = GeneratedCss.subscribe(storedCss => {
-        css = storedCss.generatedCss;
-    });
+    // const cssSubscription = GeneratedCss.subscribe(storedCss => {
+    //     css = storedCss.generatedCss;       
+    // });
+
+    function updateHTMLStyle(maincss, pseudocss) {
+        let sheet = document.getElementById('sampleStyle');
+        sheet.innerHTML = `#sampleWrapper input[type="text"] {\n${maincss}}\n`;
+        sheet.innerHTML += pseudocss;
+    }
 
 </script>
 
@@ -124,13 +152,11 @@
     .wrapper {
         background-position: center center;
         padding: 20px;
-        margin-bottom: 24px;
         overflow: visible;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2) inset;
-        border-radius: 5px; 
         margin-top: 14px;
         position: relative;
-        height: 100px;
+        height: 150px;
     }
     h4 {
         margin-top: 0;
@@ -144,23 +170,32 @@
     }
     .backColor-picker__wrapper {
         position: absolute;
-        top: -34px;
-        right: 0px;
-        width: auto;
+        top: 14px;
+        right: 14px;
+        width: 125px;
+        height: 36px;
+        background-color: #F6F6F6;
+        border-radius: 4px;
+        padding-left: 85px;
+        padding-top: 6px;
     }
     .backColor-picker__wrapper:before {
-        content: 'Sample background color:';
+        content: 'Background';
         position: absolute;
-        left: -132px;
-        top: 5px;
+        right: 48px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        margin-top: 0px;
+        transform: translateY(-50%);
         font-size: 11px;
+        font-weight: bold;
     }
 
 </style>
 
-<div class="wrapper" style="background-color: {backColor}">
+<div id="sampleWrapper" class="wrapper" style="background-color: {backColor}">
     <div class="backColor-picker__wrapper">
         <div class="backColor-picker"></div>
     </div>
-    <input type="text" placeholder="Testing..." style={css}>
+    <input type="text" placeholder="Testing...">
 </div>

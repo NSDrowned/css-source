@@ -1,10 +1,15 @@
 <script>
     import InputValues from '../../../stores/inputValues.js';
+    import MiniSwitch from '../switch/miniswitch.svelte';
     
     export let name;
     export let minValue;
     export let maxValue;
     export let valueName;
+    export let showMiniSwitch;
+    export let miniValueName;
+    export let miniFirstOption;
+    export let miniSecondOption;
 
     let rangeValue = 0;
 
@@ -17,6 +22,9 @@
 </script>
 
 <style lang="scss">
+    label {
+        line-height: 24px;
+    }
     .numberInput {
         background-color: transparent;
         border: 0;
@@ -150,8 +158,26 @@
     }
 </style>
 
-<label>{name}</label>
+<label>
+    {name} 
+    {#if showMiniSwitch}
+    <MiniSwitch 
+        firstOption={miniFirstOption}
+        secondOption={miniSecondOption}
+        valueName={miniValueName} 
+    />
+    {/if}
+</label>
 <div class="range-slider">
-    <input class="range-slider__range" type="range" min={minValue} max={maxValue} on:input={() => validateInput(rangeValue)} bind:value={rangeValue} value="{rangeValue}">
-    <span class="range-slider__value"><input class="numberInput" type="text" bind:value={rangeValue} on:input={() => validateInput(rangeValue)} value="{rangeValue}"></span>
+    <input 
+        class="range-slider__range" 
+        type="range" min={minValue} 
+        max={maxValue} 
+        on:input={() => validateInput(rangeValue)} 
+        bind:value={rangeValue} 
+        value="{rangeValue}"
+    >
+    <span class="range-slider__value">
+        <input class="numberInput" type="text" bind:value={rangeValue} on:input={() => validateInput(rangeValue)} value="{rangeValue}">
+    </span>
 </div>

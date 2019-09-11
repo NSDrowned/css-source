@@ -6,7 +6,7 @@
     export let name;
     export let valueName;
     let pickr;
-    let hexvalue = '#CCCCCC';
+    let hexvalue = '#666';
 
     onMount(async () => {
         pickr = Pickr.create({
@@ -15,7 +15,7 @@
             closeOnScroll: false,
             defaultRepresentation: 'HEX',
             comparison: false,
-            default: '#CCCCCC',
+            default: '#666',
             lockOpacity: false,
             swatches: [
                 'rgba(244, 67, 54, 1)',
@@ -80,6 +80,9 @@
 </script>
 
 <style lang="scss">
+    :global(.pickr) {
+        display: inline-block;
+    }
     .pickerWrapper {
         border: 1px dotted #CCC;
         padding: 8px;

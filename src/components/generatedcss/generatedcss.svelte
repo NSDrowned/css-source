@@ -5,7 +5,7 @@ import generatedCss from '../../stores/generatedCss.js';
 let css;
 
 const subscription = generatedCss.subscribe(storedCss => {
-	css = storedCss.generatedCss;
+	css = `input[type="text"] {\n${storedCss.generatedCss}}`;
 });
 
 </script>
@@ -23,4 +23,4 @@ const subscription = generatedCss.subscribe(storedCss => {
 </style>
 
 <h4>Generated CSS:</h4>
-<textarea placeholder="Generated CSS">{css}</textarea>
+<textarea placeholder="Generated CSS"> {css} </textarea>
