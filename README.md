@@ -4,4 +4,4 @@
 
 # CSSSource.com
 
-The most commonly searched CSS snippets in one, easy to search spot!
+The most commonly searched CSS snippets in one, easy to search, spot!
