@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://github.com/NSDrowned/css-source/blob/master/public/assets/logo-css-source-lightgray.png" alt="CSS Source">
+ <img src="https://github.com/NSDrowned/css-source/blob/master/public/logo-css-source-lightgray.png" alt="CSS Source">
 </p>
 
 # CSSSource.com
