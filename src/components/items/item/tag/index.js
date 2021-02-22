@@ -9,13 +9,13 @@ const TagWrapper = styled.div`
     display: block;
     height: 20px;
     line-height: 21px;
-    padding: 0 12px 0 8px;
+    padding: 0 12px 0 7px;
     position: relative;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
     cursor: pointer;
     margin: 4px 0;
-    margin-left: 8px;
+    margin-right: 8px;
 
     &::after {
         background: #fff;

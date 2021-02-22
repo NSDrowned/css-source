@@ -4,22 +4,27 @@ import styled from 'styled-components';
 
 const BitWrapper = styled.div`
     background-color: #FFF;
-    margin-top: 14px;
-    border-radius: 6px;
     padding: 12px 14px;
     padding-bottom: 10px;
     padding-right: 39px;
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.15);
+    // box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.15);
     line-height: 24px;
     position: relative;
+    border-bottom: 1px dotted #EFEFEF;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
 `
 
 const BitTitle = styled.div`
+    font-weight: 500;
 `
 
 const BitSubtitle = styled.div`
     font-size: 12px;
-    color: #999;
+    color: #555;
     line-height: 14px;
 `
 const LinkWrapper = styled.div`
@@ -29,8 +34,6 @@ const LinkWrapper = styled.div`
     top: 0;
     right: 0;
     background-color: #30BB9C;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
     cursor: pointer;
 
     &::before {
@@ -57,12 +60,13 @@ const LinkWrapper = styled.div`
 
 const Tags = styled.div`
     margin-top: 8px;
-    border: 1px dashed #EAECEF;
+    // border: 1px dashed #EAECEF;
     background-color: #FCFCFC;
     border-radius: 5px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    // padding-right: 4px;
 `
 import Tag from './tag';
 

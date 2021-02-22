@@ -1,60 +1,26 @@
 import Head from 'next/head'
+import styled from 'styled-components';
 
 import DefaultLayout from '@layout/default';
 
-import Bit from '@comp/bit';
+import Solution from '@comp/solution';
+import Items from '@comp/items';
 
-let entries = [
-  {
-    key: 1,
-    title: 'Center a div vertically',
-    description: 'Center a div element vertically inside a page or another div',
-    author: 'NSDrowned',
-    url: '/center-div',
-    tags: ['center', 'div', 'vertical', 'vertically']
-  },
-  {
-    key: 2,
-    title: 'Center a div horizontally',
-    description: 'Center a div element horizontally inside a page or another div',
-    author: 'NSDrowned',
-    url: '/center-div',
-    tags: ['center', 'div', 'horizontal', 'horizontally']
-  },
-  {
-    key: 3,
-    title: 'Center a div horizontally and vertically',
-    description: 'Center a div element horizontally and vertically inside a page or another div',
-    author: 'NSDrowned',
-    url: '/center-div',
-    tags: ['center', 'div', 'vertically', 'horizontally']
-  },
-  {
-    key: 4,
-    title: 'Center an absolute div horizontally',
-    description: 'Center a div element horizontally inside a page or another div',
-    author: 'NSDrowned',
-    url: '/center-div',
-    tags: ['center', 'div', 'horizontal', 'horizontally']
-  },
-  {
-    key: 5,
-    title: 'Flip an image',
-    description: 'Flip an image horizontally in one line',
-    author: 'NSDrowned',
-    url: '/center-div',
-    tags: ['flip', 'image']
-  },
-];
-
-let items = entries.map((item) => {
-  return <Bit key={item.key} data={item} />;
-});
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 384px 600px 1fr;
+  width: 100%;
+  height: 100vh;
+`;
 
 export default function Home() {
   return (
-    <DefaultLayout>
-      {items}
-    </DefaultLayout>
+      <DefaultLayout>
+        <Grid>
+          <Items />
+          <Solution />
+          <div>3</div>
+        </Grid>
+      </DefaultLayout>
   )
 }

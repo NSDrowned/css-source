@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
     position: relative;
-    background-color: #3C3C3C;
-    height: 46px;
     display: flex;
-    justify-content: center;
+    width: 100%;
+    background-color: #031627;
+    height: 44px;
     z-index: 100;
+    overflow: hidden;
 
     & > div {
         display: flex;
@@ -53,12 +54,13 @@ const GitHub = styled.a`
 
 // Components
 import Container from '@comp/container';
+import Menu from './menu';
 import Logo from './logo';
 
 export default function Header() {
 	return (
 		<HeaderWrapper>
-
+            <Logo />
             <GitHub href="https://github.com/NSDrowned/css-source" className="github-corner" aria-label="View source on GitHub" target="_blank">
                 <svg width="80" height="80" viewBox="0 0 250 250" htmlstyle="fill: #fff; color: #151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
                 <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -67,9 +69,9 @@ export default function Header() {
                 </svg>
             </GitHub>
 
-            <Container verticalCenter={true} textCenter={false}>
-                <Logo />
-            </Container>
+            {/* <Container verticalCenter={true} textCenter={false}>
+
+            </Container> */}
 		</HeaderWrapper>
 	);
 };
