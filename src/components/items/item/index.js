@@ -1,6 +1,8 @@
 // Packages
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+const reactStringReplace = require('react-string-replace');
 
 const BitWrapper = styled.div`
     background-color: #FFF;
@@ -17,11 +19,9 @@ const BitWrapper = styled.div`
       display: none;
     }
 `
-
 const BitTitle = styled.div`
     font-weight: 500;
 `
-
 const BitSubtitle = styled.div`
     font-size: 12px;
     color: #555;
@@ -57,7 +57,6 @@ const LinkWrapper = styled.div`
         }
     }
 `
-
 const Tags = styled.div`
     margin-top: 8px;
     // border: 1px dashed #EAECEF;
@@ -68,9 +67,23 @@ const Tags = styled.div`
     flex-wrap: wrap;
     // padding-right: 4px;
 `
+const SearchTerm = styled.span`
+    color: #F00;
+    font-weight: bold;
+`
+
 import Tag from './tag';
 
 export default function Bit(props) {
+
+    let title = props.data.title;
+    let search = useSelector((state) => state.search );
+
+    if(search) {
+        title = reactStringReplace(title, search, (match, i) => (
+            <SearchTerm key={i}>{match}</SearchTerm>
+        ));
+    }
 
     let tags = props.data.tags.map((tag) => {
         return <Tag key={tag} text={tag} />;
@@ -78,7 +91,7 @@ export default function Bit(props) {
 
 	return (
 		<BitWrapper>
-            <BitTitle>{props.data.title}</BitTitle>
+            <BitTitle>{title}</BitTitle>
             <BitSubtitle>{props.data.description}</BitSubtitle>
             <LinkWrapper />
             <Tags>{tags}</Tags>
